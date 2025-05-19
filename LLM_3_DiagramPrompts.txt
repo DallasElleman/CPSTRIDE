@@ -1,0 +1,33 @@
+Used Sora on April 26 2025 to generate portions of figures illustrating additive manufacturing process chain and vulnerabilities.
+
+Original prompt:
+
+A diagram for scientific publication. White background, muted colors and surreal art style similar to the Apple TV+ show Severance. Clearly and concisely illustrate Step 1 of the additive manufacturing workflow, and include a representation of the outputs of this step:
+
+Step 1: Digital Part Design.
+
+A part is designed by or at the direction of a human engineer using computer-aided design (CAD) software. This design process may include iterative optimization, simulations, finite element analysis, and other test methods as in conventional manufacturing, as well as additive manufacturing technique-specific design considerations. Digital artifacts produced in this step include the finished part's design history and 3-D model, the latter of which is usually encoded in one of several popular formats such as OBJ, 3MF, and STL.
+
+Remixed from image 1:
+
+Use this image's style (White background, muted colors and surreal art style similar to the Apple TV+ show Severance) to produce another similar diagram for scientific publication that clearly and concisely illustrates Step 2 of the additive manufacturing workflow, and include a representation of the outputs of this step:
+
+Step 2: Digital Slicing/Toolpathing.
+
+The 3-D model produced in Step 1 is processed by so-called "slicing" or "toolpathing" software that generates machine instructions for physically building the part one layer *slice* at a time. Modern slicing software enables the extensive specification of production parameters such as slice resolution and orientation, differential material density and composition throughout the part, temperature of the material, build surfaces and volume, and other factors that influence the part's appearance and functional characteristics. The digital artifact produced by this step is called the *toolpath* because it contains a machine-interpretable program of instructions for moving one or more tools along a path to deposit material and/or progressively build the additively manufactured part, although it may also contain instructions related to other production parameters specified by the slicing software. Toolpath files are written in G-Code and other industry standard formats.
+
+Remixed from image 2:
+
+Use this image's style (White background, muted colors and surreal art style similar to the Apple TV+ show Severance) to produce another similar diagram for scientific publication that clearly and concisely illustrates Step 3 of the additive manufacturing workflow, and include a representation of the outputs of this step. Focus on the additive manufacturing process, and reduce or remove the person from the diagram's focus.
+
+Step 3: Physical Part Building.
+
+Next, the additive manufacturing machine physically builds the designed part by executing the toolpath produced in Step 2. Depending on which of several process methodologies are employed, building the physical part may involve selectively depositing a liquid bonding agent to join powder materials (binder jet), focusing thermal energy to fuse materials by melting as they are being deposited (directed energy deposition), selectively curing a liquid photopolymer by focusing light in a vat of material (vat photopolymerization), and so on. When the toolpath program is finished executing, a fully-built physical part is produced.
+
+Remixed from image 3:
+
+Use this image's style (White background, muted colors and surreal art style similar to the Apple TV+ show Severance) to produce another similar diagram for scientific publication that clearly and concisely illustrates Step 4 of the additive manufacturing workflow, and include a representation of the outputs of this step. Include a person in a lab coat depositing the part into a post-processing machine.
+
+Step 4: Physical Post-processing.
+
+The final step of the additive manufacturing workflow may be applied to a greater or lesser degree in order to improve the quality, precision, and other characteristics of the physical part. Post-processing may involve the removal of non-essential support material, further photopolymer hardening, chemical rinsing, subtractive machining, curing, sintering, or any of a number of other techniques depending on the part material and the AM methodology employed. As with other manufacturing methods, post-processing may be followed by quality control testing, warehousing, shipping, and other product life cycle phases.
