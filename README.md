@@ -3,31 +3,41 @@
 ## Overview
 CPSTRIDE extends the popular STRIDE threat modeling framework to address the unique security challenges of Cyber-Physical Systems (CPS). This framework introduces new threat categories and modeling abstractions specifically designed to capture the physical dimensionality and cyber-physical interactions that traditional STRIDE cannot adequately represent.
 
+## Repository Organization
+This repository is organized by conference/publication, with each conference receiving its own directory containing all associated materials. This structure supports:
+- Clear separation of materials for different publications
+- Easy addition of future conference applications of CPSTRIDE
+- Organized archival of research artifacts by venue and date
+
 ## Repository Contents
 
 ```
 CPSTRIDE/
 ├── README.md                                           # This file - repository overview and documentation
-├── cpstride-critis-2025.pdf                          # Published CRITIS 2025 conference paper
-├── claude-3-7-threat-modeling-conversation.md        # Complete human-AI collaboration dialogue
-├── llm-generated-cpstride-threat-matrix-output.csv   # Threat analysis results from AI collaboration
-├── sora-diagram-prompts.txt                           # Prompts used for diagram generation
-└── MaterialsProvidedToLLM/                           # Reference materials provided to AI assistant
-    ├── am-cpfd.pdf                                    # Additive Manufacturing Cyber-Physical Flow Diagram
-    ├── am-dfd.pdf                                     # Additive Manufacturing Data Flow Diagram  
-    ├── claude-3-7-agent-prompt.md                    # AI agent initialization prompt
-    ├── cpstride-spec.pdf                             # CPSTRIDE framework specification
-    ├── stride-spec.pdf                               # Original STRIDE specification (PDF)
-    ├── stride-spec.txt                               # Original STRIDE specification (text)
-    └── susceptibility-matrix-comparison.pdf          # Cyber-Physical susceptibility analysis matrix
+└── CRITIS2025-CPSTRIDE-Additive-Manufacturing/        # CRITIS 2025 conference materials
+    ├── cpstride-critis-2025.pdf                       # Published CRITIS 2025 conference paper
+    ├── claude-3-7-threat-modeling-conversation.md     # Complete human-AI collaboration dialogue
+    ├── llm-generated-cpstride-threat-matrix-output.csv # Threat analysis results from AI collaboration
+    ├── sora-diagram-prompts.txt                       # Prompts used for diagram generation
+    └── MaterialsProvidedToLLM/                        # Reference materials provided to AI assistant
+        ├── am-cpfd.pdf                                # Additive Manufacturing Cyber-Physical Flow Diagram
+        ├── am-dfd.pdf                                 # Additive Manufacturing Data Flow Diagram
+        ├── claude-3-7-agent-prompt.md                 # AI agent initialization prompt
+        ├── cpstride-spec.pdf                          # CPSTRIDE framework specification
+        ├── stride-spec.pdf                            # Original STRIDE specification (PDF)
+        ├── stride-spec.txt                            # Original STRIDE specification (text)
+        └── susceptibility-matrix-comparison.pdf       # Cyber-Physical susceptibility analysis matrix
 ```
 
 ### File Descriptions
 
-#### Core Publication
-- **`cpstride-critis-2025.pdf`** - The peer-reviewed conference paper presenting the CPSTRIDE framework, accepted and presented at CRITIS 2025
+#### CRITIS 2025 Conference Materials
+All materials related to the CRITIS 2025 conference presentation are organized under `CRITIS2025-CPSTRIDE-Additive-Manufacturing/`:
 
-#### Human-AI Collaboration Documentation  
+#### Core Publication
+- **`cpstride-critis-2025.pdf`** - The peer-reviewed conference paper presenting the CPSTRIDE framework, accepted and presented at CRITIS 2025 (Jönköping, Sweden, October 21-23, 2025)
+
+#### Human-AI Collaboration Documentation
 - **`claude-3-7-threat-modeling-conversation.md`** - Complete transcript of the human-AI collaborative threat modeling session
 - **`llm-generated-cpstride-threat-matrix-output.csv`** - Structured output from AI-assisted threat identification and analysis
 - **`sora-diagram-prompts.txt`** - Prompts used for generating visual diagrams and illustrations
@@ -35,7 +45,7 @@ CPSTRIDE/
 #### Reference Materials
 - **`MaterialsProvidedToLLM/`** - All supporting materials provided to the AI assistant for context and analysis
   - **Case Study Materials**: Additive manufacturing flow diagrams and data models
-  - **Framework Specifications**: Both CPSTRIDE and original STRIDE documentation  
+  - **Framework Specifications**: Both CPSTRIDE and original STRIDE documentation
   - **Analysis Tools**: Susceptibility matrices and comparison frameworks
   - **Agent Configuration**: Initialization prompts for AI collaboration
 
