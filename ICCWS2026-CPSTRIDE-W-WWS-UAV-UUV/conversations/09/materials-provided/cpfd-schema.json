@@ -1,0 +1,401 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/cpfd-schema.json",
+  "title": "Cyber-Physical Flow Diagram (CPFD) Schema",
+  "description": "JSON schema for representing CPFD elements used in CPSTRIDE threat modeling of cyber-physical systems",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "systemName": {
+          "type": "string",
+          "description": "Name of the cyber-physical system being modeled"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the CPFD model"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the CPFD was created"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the CPFD was last modified"
+        },
+        "description": {
+          "type": "string",
+          "description": "Overall description of the system"
+        }
+      },
+      "required": ["systemName", "version"]
+    },
+    "elements": {
+      "type": "array",
+      "description": "Array of all CPFD elements in the system",
+      "items": {
+        "oneOf": [
+          { "$ref": "#/definitions/Interactor" },
+          { "$ref": "#/definitions/TrustBoundary" },
+          { "$ref": "#/definitions/Process" },
+          { "$ref": "#/definitions/Store" },
+          { "$ref": "#/definitions/Device" },
+          { "$ref": "#/definitions/Flow" },
+          { "$ref": "#/definitions/Link" }
+        ]
+      }
+    }
+  },
+  "required": ["metadata", "elements"],
+  "definitions": {
+    "elementBase": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the element (e.g., CPI1, CPD3, CPTB1)",
+          "pattern": "^(C|P|CP)(I|TB|S|P|D|F|L)\\d+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable name of the element"
+        },
+        "domain": {
+          "type": "string",
+          "enum": ["cyber", "physical", "cyber-physical"],
+          "description": "Security domain of the element"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the element's purpose and characteristics"
+        }
+      },
+      "required": ["id", "name", "domain", "description"]
+    },
+    "Interactor": {
+      "allOf": [
+        { "$ref": "#/definitions/elementBase" },
+        {
+          "type": "object",
+          "properties": {
+            "elementType": {
+              "type": "string",
+              "const": "Interactor"
+            },
+            "connectedLinks": {
+              "type": "array",
+              "description": "Links connected to this interactor",
+              "items": {
+                "type": "string",
+                "description": "Link ID (e.g., CL1, PL2, CPL1)"
+              }
+            },
+            "incomingFlows": {
+              "type": "array",
+              "description": "Flows coming into this interactor",
+              "items": {
+                "type": "string",
+                "description": "Flow ID (e.g., CF1, PF3, CPF2)"
+              }
+            },
+            "outgoingFlows": {
+              "type": "array",
+              "description": "Flows going out from this interactor",
+              "items": {
+                "type": "string",
+                "description": "Flow ID (e.g., CF1, PF3, CPF2)"
+              }
+            }
+          },
+          "required": [
+            "elementType",
+            "connectedLinks",
+            "incomingFlows",
+            "outgoingFlows"
+          ]
+        }
+      ]
+    },
+    "TrustBoundary": {
+      "allOf": [
+        { "$ref": "#/definitions/elementBase" },
+        {
+          "type": "object",
+          "properties": {
+            "elementType": {
+              "type": "string",
+              "const": "TrustBoundary"
+            },
+            "enclosedElements": {
+              "type": "array",
+              "description": "Elements contained within this trust boundary",
+              "items": {
+                "type": "string",
+                "description": "Element ID of any type enclosed by this boundary"
+              }
+            },
+            "nestedTrustBoundaries": {
+              "type": "array",
+              "description": "Trust boundaries nested within this trust boundary",
+              "items": {
+                "type": "string",
+                "description": "Trust Boundary ID (e.g., CTB1, PTB2, CPTB1)"
+              }
+            },
+            "crossingLinks": {
+              "type": "array",
+              "description": "Links that cross this trust boundary",
+              "items": {
+                "type": "string",
+                "description": "Link ID (e.g., CL1, PL2, CPL1)"
+              }
+            },
+            "crossingFlows": {
+              "type": "array",
+              "description": "Flows that cross this trust boundary",
+              "items": {
+                "type": "string",
+                "description": "Flow ID (e.g., CF1, PF3, CPF2)"
+              }
+            }
+          },
+          "required": [
+            "elementType",
+            "enclosedElements",
+            "nestedTrustBoundaries",
+            "crossingLinks",
+            "crossingFlows"
+          ]
+        }
+      ]
+    },
+    "Process": {
+      "allOf": [
+        { "$ref": "#/definitions/elementBase" },
+        {
+          "type": "object",
+          "properties": {
+            "elementType": {
+              "type": "string",
+              "const": "Process"
+            },
+            "incomingFlows": {
+              "type": "array",
+              "description": "Flows coming into this process",
+              "items": {
+                "type": "string",
+                "description": "Flow ID (e.g., CF1, PF3, CPF2)"
+              }
+            },
+            "outgoingFlows": {
+              "type": "array",
+              "description": "Flows going out from this process",
+              "items": {
+                "type": "string",
+                "description": "Flow ID (e.g., CF1, PF3, CPF2)"
+              }
+            },
+            "enablingDevices": {
+              "type": "array",
+              "description": "Devices that enable or execute this process",
+              "items": {
+                "type": "string",
+                "description": "Device ID (e.g., CD1, PD3, CPD5)"
+              }
+            }
+          },
+          "required": [
+            "elementType",
+            "incomingFlows",
+            "outgoingFlows",
+            "enablingDevices"
+          ]
+        }
+      ]
+    },
+    "Store": {
+      "allOf": [
+        { "$ref": "#/definitions/elementBase" },
+        {
+          "type": "object",
+          "properties": {
+            "elementType": {
+              "type": "string",
+              "const": "Store"
+            },
+            "incomingFlows": {
+              "type": "array",
+              "description": "Flows coming into this store",
+              "items": {
+                "type": "string",
+                "description": "Flow ID (e.g., CF1, PF3, CPF2)"
+              }
+            },
+            "outgoingFlows": {
+              "type": "array",
+              "description": "Flows going out from this store",
+              "items": {
+                "type": "string",
+                "description": "Flow ID (e.g., CF1, PF3, CPF2)"
+              }
+            },
+            "enablingDevices": {
+              "type": "array",
+              "description": "Devices that contain or manage this store",
+              "items": {
+                "type": "string",
+                "description": "Device ID (e.g., CD1, PD3, CPD5)"
+              }
+            },
+            "parentStore": {
+              "type": ["string", "null"],
+              "description": "ID of parent store if this is a nested store",
+              "default": null
+            },
+            "childStores": {
+              "type": ["array", "null"],
+              "description": "IDs of nested stores contained within this store (null if no child stores)",
+              "items": {
+                "type": "string",
+                "description": "Store ID (e.g., CS1, PS2, CPS1)"
+              },
+              "default": null
+            }
+          },
+          "required": [
+            "elementType",
+            "incomingFlows",
+            "outgoingFlows",
+            "enablingDevices"
+          ]
+        }
+      ]
+    },
+    "Device": {
+      "allOf": [
+        { "$ref": "#/definitions/elementBase" },
+        {
+          "type": "object",
+          "properties": {
+            "elementType": {
+              "type": "string",
+              "const": "Device"
+            },
+            "connectedLinks": {
+              "type": "array",
+              "description": "Links connected to this device",
+              "items": {
+                "type": "string",
+                "description": "Link ID (e.g., CL1, PL2, CPL1)"
+              }
+            },
+            "enabledProcesses": {
+              "type": "array",
+              "description": "Processes enabled or executed by this device",
+              "items": {
+                "type": "string",
+                "description": "Process ID (e.g., CP1, PP2, CPP3)"
+              }
+            },
+            "enabledStores": {
+              "type": "array",
+              "description": "Stores contained or managed by this device",
+              "items": {
+                "type": "string",
+                "description": "Store ID (e.g., CS1, PS2, CPS1)"
+              }
+            }
+          },
+          "required": [
+            "elementType",
+            "connectedLinks",
+            "enabledProcesses",
+            "enabledStores"
+          ]
+        }
+      ]
+    },
+    "Flow": {
+      "allOf": [
+        { "$ref": "#/definitions/elementBase" },
+        {
+          "type": "object",
+          "properties": {
+            "elementType": {
+              "type": "string",
+              "const": "Flow"
+            },
+            "directionality": {
+              "type": "string",
+              "enum": ["uni-directional", "bi-directional"],
+              "description": "Direction of the flow"
+            },
+            "crossedTrustBoundaries": {
+              "type": "array",
+              "description": "Trust boundaries crossed by this flow",
+              "items": {
+                "type": "string",
+                "description": "Trust Boundary ID (e.g., CTB1, PTB2, CPTB1)"
+              }
+            },
+            "sourceElement": {
+              "type": ["string", "null"],
+              "description": "ID of the element where this flow originates (Process, Store, or Interactor)",
+              "default": null
+            },
+            "targetElement": {
+              "type": ["string", "null"],
+              "description": "ID of the element where this flow terminates (Process, Store, or Interactor)",
+              "default": null
+            }
+          },
+          "required": [
+            "elementType",
+            "directionality",
+            "crossedTrustBoundaries",
+            "sourceElement",
+            "targetElement"
+          ]
+        }
+      ]
+    },
+    "Link": {
+      "allOf": [
+        { "$ref": "#/definitions/elementBase" },
+        {
+          "type": "object",
+          "properties": {
+            "elementType": {
+              "type": "string",
+              "const": "Link"
+            },
+            "connectedElements": {
+              "type": "array",
+              "description": "Elements (Devices and/or Interactors) connected by this link",
+              "items": {
+                "type": "string",
+                "description": "Element ID (e.g., CD1, PD3, CPD5, CI1, PI2, CPI1)"
+              }
+            },
+            "crossedTrustBoundaries": {
+              "type": "array",
+              "description": "Trust boundaries crossed by this link",
+              "items": {
+                "type": "string",
+                "description": "Trust Boundary ID (e.g., CTB1, PTB2, CPTB1)"
+              }
+            }
+          },
+          "required": [
+            "elementType",
+            "connectedElements",
+            "crossedTrustBoundaries"
+          ]
+        }
+      ]
+    }
+  }
+}
