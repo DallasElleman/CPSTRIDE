@@ -9,24 +9,46 @@ This repository is organized by conference/publication, with each conference rec
 - Easy addition of future conference applications of CPSTRIDE
 - Organized archival of research artifacts by venue and date
 
+## Anonymous Repository
+
+For conference submissions requiring anonymous review, an anonymized version of this repository is available at:
+**https://anonymous.4open.science/r/CPSTRIDE-CE67/**
+
+The anonymized repository (ICCWS branch) contains only materials relevant to specific submissions with author identities redacted.
+
 ## Repository Contents
 
 ```
 CPSTRIDE/
-├── README.md                                           # This file - repository overview and documentation
-└── CRITIS2025-CPSTRIDE-Additive-Manufacturing/        # CRITIS 2025 conference materials
-    ├── cpstride-critis-2025.pdf                       # Published CRITIS 2025 conference paper
-    ├── claude-3-7-threat-modeling-conversation.md     # Complete human-AI collaboration dialogue
-    ├── llm-generated-cpstride-threat-matrix-output.csv # Threat analysis results from AI collaboration
-    ├── sora-diagram-prompts.txt                       # Prompts used for diagram generation
-    └── MaterialsProvidedToLLM/                        # Reference materials provided to AI assistant
-        ├── am-cpfd.pdf                                # Additive Manufacturing Cyber-Physical Flow Diagram
-        ├── am-dfd.pdf                                 # Additive Manufacturing Data Flow Diagram
-        ├── claude-3-7-agent-prompt.md                 # AI agent initialization prompt
-        ├── cpstride-spec.pdf                          # CPSTRIDE framework specification
-        ├── stride-spec.pdf                            # Original STRIDE specification (PDF)
-        ├── stride-spec.txt                            # Original STRIDE specification (text)
-        └── susceptibility-matrix-comparison.pdf       # Cyber-Physical susceptibility analysis matrix
+├── README.md                                    # Repository overview and documentation
+├── CPFD-specification-v3.pdf                    # Cyber-Physical Flow Diagram specification
+├── CPSTRIDE-specification-v3.md                 # CPSTRIDE framework specification (markdown)
+├── CRITIS2025-CPSTRIDE-Additive-Manufacturing/  # CRITIS 2025 conference materials
+│   ├── cpstride-critis-2025.pdf                 # Published CRITIS 2025 conference paper
+│   ├── claude-3-7-threat-modeling-conversation.md # Complete human-AI collaboration dialogue
+│   ├── llm-generated-cpstride-threat-matrix-output.csv # Threat analysis results
+│   ├── sora-diagram-prompts.txt                 # Prompts used for diagram generation
+│   └── MaterialsProvidedToLLM/                  # Reference materials provided to AI assistant
+│       ├── am-cpfd.pdf                          # Additive Manufacturing CPFD
+│       ├── am-dfd.pdf                           # Additive Manufacturing DFD
+│       ├── claude-3-7-agent-prompt.md           # AI agent initialization prompt
+│       ├── cpstride-spec.pdf                    # CPSTRIDE framework specification
+│       ├── stride-spec.pdf                      # Original STRIDE specification (PDF)
+│       ├── stride-spec.txt                      # Original STRIDE specification (text)
+│       └── susceptibility-matrix-comparison.pdf # Cyber-Physical susceptibility matrix
+└── ICCWS2026-CPSTRIDE-W-WWS-UAV-UUV/           # ICCWS 2026 materials
+    ├── methodology.md                           # LLM-assisted threat modeling methodology
+    └── conversations/                           # Iterative human-AI collaboration sessions
+        ├── 01/ - Initial CPFD refinement and agent prompt development
+        ├── 02/ - CPFD vs DFD differential element identification
+        ├── 03/ - CPFD element enumeration for water treatment facility
+        ├── 04/ - Minimal CPFD JSON schema development
+        ├── 05/ - Water treatment facility CPFD v1 (JSON creation)
+        ├── 06/ - Water treatment facility CPFD v2 (JSON refinement)
+        ├── 07/ - CPSTRIDE specification refinement to v3
+        ├── 08/ - Water treatment facility CPFD v3 (final JSON)
+        ├── 09/ - Threat matrix creation (initial)
+        └── 10/ - Threat matrix cleanup and validation
 ```
 
 ### File Descriptions
