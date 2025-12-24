@@ -1402,5 +1402,5 @@ By applying CPSTRIDE to cyber-physical systems like additive manufacturing facil
 ---
 
 *Document Version: 1.0*  
-*Based on CPSTRIDE Specification by Dallas Elleman, University of Tulsa*  
+*Based on CPSTRIDE Specification by **redacted for anonymous submission***  
 *STRIDE Framework by Microsoft Corporation*
